@@ -1,0 +1,57 @@
+﻿body 
+{
+}
+#main
+{
+	border:1px solid black;
+	height:630px;
+	width:1339px;
+	background: linear-gradient( 65deg,#6d3353 0%,white 100%);
+	margin:0 0 0 0px;
+}
+#header
+{
+	
+	border:1px solid yellow;
+	height:70px;
+	width:1217;
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 3px 0px 5px rgba(0,0,0,0.2);
+    background: linear-gradient(50deg, #020031 0%,#6d3353 50%);
+}
+#contactmain
+{
+	height:300px;
+	width:320px;
+	border:5px solid white;
+	border-bottom:none;
+	border-top:none;
+	border-radius:10px;
+	margin:100px 0 0 200px; 
+}
+.conlbl
+{
+	color:#6d3353;
+	margin:0 0 5px 95px;
+	font-size:xx-large;
+	border:2px solid white;
+	border-radius:5px;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+}
+.conimg
+{
+	height:75px;
+	width:275;
+	margin:20px 0 0 22px;
+}
+.con_font
+{
+	color:#6d3353;
+	padding:5px;
+    font-weight:bold;
+    text-decoration:none;
+	
+}

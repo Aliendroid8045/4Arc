@@ -1,0 +1,51 @@
+﻿body 
+{
+}
+.musiclbl
+{
+	font-size:50px;
+	font-style:italic;
+	font-weight:bold;
+	float:left;
+	margin:6px 0 0 329px;
+	color:White;
+}
+.plbl
+{
+	margin:20px 0 0 190px;
+	float:left;
+	font-style:italic;
+	font-size:larger;
+	color:White;
+}
+#musicmain
+{
+	height:550px;
+	width:790px;
+	background: linear-gradient( 65deg,Gray 0%,white 100%);
+}
+#header
+{
+	border:1px solid yellow;
+	height:70px;
+	width:1217;
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 3px 0px 5px rgba(0,0,0,0.2);
+    background: linear-gradient(20deg, #020031 0%,Gray 50%);
+}
+.btn
+{
+	margin:15px 0 0 240px;
+	float:left;
+}
+.btn1
+{
+	float:left;
+	margin:15px 0 0 0px;
+}
+.player
+{
+	margin:25px 0 0 105px;
+	float:left;
+}

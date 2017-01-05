@@ -1,0 +1,97 @@
+﻿body 
+{
+}
+#main
+{
+	height:630px;
+	width:790px;
+	background: linear-gradient( 65deg,#6d3353 0%,white 100%);
+}
+#header
+{
+	border:1px solid yellow;
+	height:70px;
+	width:1217;
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 3px 0px 5px rgba(0,0,0,0.2);
+    background: linear-gradient(50deg, #020031 0%,#6d3353 50%);
+    
+    
+}
+.logotxt
+{
+	font-size:xx-large;
+	font-style:italic;
+	color:White;
+	margin:50px 0 0 20px;
+}
+#inqmain
+{
+	border-left: 5px solid white;
+	border-right: 5px solid white;
+	height:400px;
+		width:320px;
+		border-bottom:none;
+		border-top:none;
+		border-radius:10px;
+		margin-top: 50px;
+	margin-bottom: 0;
+	margin:50px 0 0 240px;
+}
+.inqlbl
+{
+	color:#6d3353;
+	margin:0 0 5px 115px;
+	font-size:xx-large;
+	border:2px solid white;
+	border-radius:5px;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+}
+#inqfield
+{
+	height:300px;
+	width:300px;
+	margin:30px 0 0 0;
+}
+.short_explanation 
+{
+	font-family: Arial, sans-serif;
+	font-size: 0.6em;
+	color:white;
+	font-size:15px;
+	margin:10px 0 0 15px;
+}
+.fontstyle
+{
+	color:White;
+	font-size:20px;
+	margin:30px 0 0 15px;
+}
+.textsize
+{
+	border-radius:5px;
+    border-collapse:collapse;
+    margin:0 0 10px 15px;
+    width:235px;
+    height:20px;
+}
+.inqbutton
+{
+    margin:10px 0 0 110px;
+    border-radius:10px;
+    color:#6d3353;
+    height:35px;
+    width:100px;
+    border-color:#6d3353;
+}	
+.about
+{
+	color:#6d3353;
+	margin:2px 0 0 10px;
+	font-family:Arial;
+	font-size:larger;
+	padding:10px;
+}

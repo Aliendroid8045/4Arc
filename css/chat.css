@@ -1,0 +1,46 @@
+﻿body 
+{
+}
+
+#maintbl
+{
+	border:1px solid gray;
+	margin:236px 0 0 200px;
+}
+.lbl1
+{
+    font-family:Times New Roman;
+    color:Gray;
+    font-size:larger;
+    font-weight:bold;
+    margin:15px 0 0 0;
+    float:left;
+}
+.chtlbl
+{
+	font-family:Times New Roman;
+	font-size:xx-large;
+	font-style:inherit;
+	font-weight:bold;
+	float:left;
+	margin:170px 0 0 316px;
+	color:Gray;
+}
+.txt
+{
+	margin:15px 0 0 28px;
+	width:200px;
+	border-radius:3px;
+}
+.join
+{
+	margin:15px 0 0 60px;
+	float:left;
+    color:White;
+    background-color:gray;
+}
+#chatdiv
+{
+	margin:0 0 0 0px;
+	float:left;
+}

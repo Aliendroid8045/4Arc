@@ -1,0 +1,626 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="profile.master.cs" Inherits="MasterPage2" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<%@ Register assembly="RssToolkit" namespace="RssToolkit.Web.WebControls" tagprefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Vconnect</title>
+    <script src="js/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+ <script type="text/javascript">
+
+     $(document).ready(function () {
+
+         $("#<%= TextBox1.ClientID %>").keyup(function () {
+
+             name = $(this).val();
+             //alert(name);
+             if (name == "") {
+                 $("#mydiv").hide();
+             }
+             $.get("ajax.aspx?name=" + name, {}, function (html) {
+                 $("#mydiv").html(html).show();
+             });
+             $("body").click(function () {
+                 $("#mydiv").hide();
+             })
+         });
+
+     });
+    
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+           
+
+                       $("body").click(function () {
+                           $("#Panel3").hide();
+                           $("#request").hide();
+                           $("#Panel2").hide();
+                })
+            
+        });
+    </script>
+    <!-- Add jQuery library -->
+	<script type="text/javascript" src="fancybox/jquery-1.10.1.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="fancybox/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="fancybox/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<script type="text/javascript" src="fancybox/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="fancybox/jquery.fancybox-media.js?v=1.0.6"></script>
+
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        /*
+	        *  Simple image gallery. Uses default settings
+	        */
+
+	        $('.fancybox').fancybox();
+
+
+
+	    });
+	</script>
+
+     <style type="text/css">
+.modalBackground
+{
+background-color: Gray;
+filter: alpha(opacity=80);
+opacity: 0.8;
+z-index: 10000;
+}
+</style>
+   
+    <script src="js/jquery.MultiFile.js" type="text/javascript"></script>
+    
+    <link href="css/p.css" rel="stylesheet" type="text/css" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+</head>
+<body>
+     <div id="mydiv" style="position:fixed; z-index:5000; background-color:#fff;  top:47px; display:none; right:170px; border:1px solid #ddd; padding:20px; width:180px;">
+        this is tests
+     </div>
+     <form id="form1" runat="server">
+    <div id="main">
+    <div id="header" 
+            
+            
+            style="background-position: left center; float: right; width:1151px; position:fixed; top:0px; margin-left:190px;background-image: url('/4arc- A Social networking website with market express/images/hea.jpg'); z-index:10; ">
+   
+   
+    
+     <div id="header-logo" align="center" style="margin-top:2px;margin-left:50px">
+         
+    
+         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/final1.png" 
+             style="border-style: none; border-color: inherit; border-width: medium; padding: 0px;" 
+             onclick="ImageButton1_Click" Height="60px" Width="135px" />
+    </div>
+
+    <div id="header-no" style="margin-left:470px"><div style="height:40px;width:220px;float:left;margin-left:60px">
+    
+     <div style="position:absolute; top:10%;right:49%;z-index:-10">
+        <img src="images/ring.png" alt="" width="20px" height="20px"/>
+        <asp:Label ID="Label3" runat="server" style="position:absolute;left:28%;top:16%" 
+             ForeColor="White"></asp:Label>
+         </div>
+         
+    <div style="margin-left:10px;margin-top:14px; float:left; width:40px; height:40px">
+       
+        <asp:ImageButton ID="friend" runat="server" Height="40px" Width="40px" 
+            ImageUrl="~/images/Group_of_People-512.png" onclick="friend_Click" />
+      
+        <asp:Panel ID="request" runat="server" BackColor="#ffffff" BorderColor="Silver" 
+            BorderStyle="Solid" BorderWidth="2px" 
+            style="margin-top:10px;margin-left:-75px; position:relative;padding:0px 10px 10px 10px" Width="225px">
+            <img src="images/arro.png" alt="" width="15px" height="10px" style="left:42%;top:-32%;position:absolute" />
+         <asp:DataList ID="DataList2" runat="server" style="position:relative">
+            <ItemTemplate>
+            <div>
+            <div style="width:50px; height:50px; float:left;margin-top:10px ">
+                <asp:Image ID="Image3" runat="server" Height="50px" 
+                    ImageUrl='<%# Eval("u_avatar2") %>' Width="50px" />
+                 </div>   <div style="float:left;padding:25px 15px 15px 0px;width:30px;height:1px">
+                <asp:Label ID="Label1" runat="server" Text='<%# Eval("user_name") %>'></asp:Label>
+                </div>
+                <div style="float:left;padding-top:19px">
+                    <asp:Button ID="accept" runat="server" Text="Accept" onclick="accept_Click" 
+                        CommandArgument='<%# Eval("user_id") %>'  />
+                    </div><%--<div style="float:left;margin-left:2px;padding-top:9px">
+                    <asp:Button ID="deny" runat="server" Text="Deny"  /></div>--%>
+                    <div style="float:left;margin-left:5px;padding-top:19px">
+                    <asp:Button ID="notnow" runat="server" Text="Not Now" onclick="notnow_Click" CommandArgument='<%# Eval("user_id") %>'/>
+                        
+                </div>
+                  </div>
+            </ItemTemplate>
+        </asp:DataList>
+            <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+        <div style="margin-top:10px">
+            <asp:LinkButton ID="LinkButton7" runat="server" onclick="LinkButton7_Click" >See the pending requests</asp:LinkButton></div>
+             <asp:DataList ID="DataList3" runat="server" style="position:relative">
+            <ItemTemplate>
+            <div>
+            <div style="width:50px; height:50px; float:left;margin-top:10px ">
+                <asp:Image ID="Image3" runat="server" Height="50px" 
+                    ImageUrl='<%# Eval("u_avatar2") %>' Width="50px" />
+                 </div>   <div style="float:left;padding:25px 15px 15px 0px;width:30px;height:1px">
+                <asp:Label ID="Label1" runat="server" Text='<%# Eval("user_name") %>'></asp:Label>
+                </div>
+                <div style="float:left;padding-top:19px">
+                    <asp:Button ID="accept" runat="server" Text="Accept" onclick="accept_Click" 
+                        CommandArgument='<%# Eval("user_id") %>'  />
+                    </div><%--<div style="float:left;margin-left:2px;padding-top:9px">
+                    <asp:Button ID="deny" runat="server" Text="Deny"  /></div>--%>
+                    <div style="float:left;margin-left:5px;padding-top:19px">
+                    <asp:Button ID="notnow" runat="server" Text="Not Now" onclick="notnow_Click" CommandArgument='<%# Eval("user_id") %>'/>
+                        
+                </div>
+                  </div>
+            </ItemTemplate>
+        </asp:DataList>
+        </asp:Panel>
+        </div>
+       <div style="position:absolute; top:10%;right:44%;z-index:-10">
+        <img src="images/ring.png" alt="" width="20px" height="20px"/>
+        <asp:Label ID="Label15" runat="server" 
+                style="position:absolute;left:42%;top:16%" ForeColor="White"></asp:Label>
+         </div>
+        <div style="float:left; border-width: thin;margin-left:20px;margin-top:15px; width:40px; height:40px">
+            <asp:ImageButton ID="ImageButton4" runat="server" Height="35px" Width="35px" 
+                ImageUrl="~/images/Discussion-512.png" onclick="ImageButton4_Click"/>
+     <asp:Panel ID="Panel2" runat="server" BackColor="#ffffff" BorderColor="Silver" 
+            BorderStyle="Solid" BorderWidth="2px" 
+            style="margin-top:10px;margin-left:-75px; position:relative;padding:0px 10px 10px 10px" Width="225px">
+            <img src="images/arro.png" alt="" width="15px" height="10px" style="left:42%;top:-32%;position:absolute" />
+            
+         <asp:DataList ID="DataList6" runat="server" style="position:relative">
+            <ItemTemplate>
+            <div style="width:225px">
+                <asp:LinkButton ID="msg" runat="server" Width="225px" 
+                    CommandArgument='<%# Eval("user_id") %>' onclick="msg_Click" 
+                     > <div style="width:50px; height:50px; float:left;margin-top:10px "><asp:Image ID="Image3" runat="server" Height="50px" 
+                    ImageUrl='<%# Eval("avatar2") %>' Width="50px" /></div><div style="float:left;padding:25px 15px 15px 0px;width:30px;height:1px;margin-left:10px"><asp:Label ID="Label1" runat="server" Text='<%# Eval("name") %>'></asp:Label></div></asp:LinkButton>
+           
+                
+                  </div>
+            </ItemTemplate>
+        </asp:DataList>
+       
+         <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+        </asp:Panel>
+        </div>
+          <div style="position:absolute; top:10%;right:39%;z-index:-10">
+        <img src="images/ring.png" alt="" width="20px" height="20px"/>
+        <asp:Label ID="Label20" runat="server" 
+                style="position:absolute;left:40%; top:300%" ForeColor="White"></asp:Label>
+         </div>
+        <div style="float:left;margin-left:20px;margin-top:15px; width:40px; height:40px">
+            <asp:ImageButton ID="ImageButton2" runat="server"  Height="35px" Width="35px" 
+                ImageUrl="~/images/1366728905_help_black.png" OnClick="imageButton2"/>
+        <asp:Panel ID="Panel3" runat="server" BackColor="#ffffff" BorderColor="Silver" 
+            BorderStyle="Solid" BorderWidth="2px" 
+            style="margin-top:10px;margin-left:-75px; position:relative;padding:0px 10px 10px 10px" Width="225px" Visible="false" >
+            <img src="images/arro.png" alt="" width="15px" height="10px" style="left:42%;top:-32%;position:absolute" />
+            
+         <asp:DataList ID="DataList5" runat="server" style="position:relative">
+            <ItemTemplate>
+            <div style="width:225px">
+                <asp:LinkButton ID="notify" runat="server" Width="225px" onclick="notify_Click" CommandArgument='<%# Eval("post_id") %>' 
+                     >
+                     <div style="width:50px; height:50px; float:left;margin-top:10px ">
+                     <asp:Image ID="Image3" runat="server" Height="50px" ImageUrl='<%# Eval("avatar2") %>' Width="50px" />
+                     </div>
+                     <div style="float:left;padding:25px 2px 15px 0px;width:30px;height:1px;margin-left:10px">
+                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("name") %>'></asp:Label>
+                     </div>
+                     <div style="float:left;padding:25px 1px 15px 0px;width:30px;height:1px;margin-left:5px">
+                         <asp:Label ID="Label19" runat="server" Text='<%# Eval("likes") %>' ></asp:Label>
+                        
+                     </div>
+                     <div style="float:left;padding:25px 2px 15px 0px;width:80px;height:1px;margin-left:2px">
+                         <asp:Label ID="Label18" runat="server" Text="on Post"></asp:Label>
+                     </div>
+                     </asp:LinkButton>
+           
+                
+                  </div>
+            </ItemTemplate>
+        </asp:DataList>
+       <asp:DataList ID="DataList7" runat="server" style="position:relative">
+            <ItemTemplate>
+            <div style="width:225px">
+                <asp:LinkButton ID="notify" runat="server" Width="225px" onclick="notify_Click1" CommandArgument='<%# Eval("post_id") %>' 
+                     >
+                     <div style="width:50px; height:50px; float:left;margin-top:10px ">
+                     <asp:Image ID="Image3" runat="server" Height="50px" ImageUrl='<%# Eval("avatar2") %>' Width="50px" />
+                     </div>
+                     <div style="float:left;padding:25px 2px 15px 0px;width:30px;height:1px;margin-left:10px">
+                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("name") %>'></asp:Label>
+                     </div>
+                     <div style="float:left;padding:25px 5px 15px 0px;width:30px;height:1px;margin-left:5px">
+                         <asp:Label ID="Label19" runat="server" Text='<%# Eval("dislike") %>' ></asp:Label>
+                        
+                     </div>
+                     <div style="float:left;padding:25px 2px 15px 0px;width:80px;height:1px;margin-left:5px">
+                         <asp:Label ID="Label18" runat="server" Text="on Post"></asp:Label>
+                     </div>
+                     </asp:LinkButton>
+           
+                
+                  </div>
+            </ItemTemplate>
+        </asp:DataList>
+        <asp:DataList ID="DataList8" runat="server" style="position:relative">
+            <ItemTemplate>
+            <div style="width:225px">
+                <asp:LinkButton ID="notify" runat="server" Width="225px" onclick="notify_Click2" CommandArgument='<%# Eval("post_id") %>'
+                   >
+                     <div style="width:50px; height:50px; float:left;margin-top:10px ">
+                     <asp:Image ID="Image3" runat="server" Height="50px" ImageUrl='<%# Eval("avatar2") %>' Width="50px" />
+                     </div>
+                     <div style="float:left;padding:25px 5px 15px 0px;width:30px;height:1px;margin-left:10px">
+                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("name") %>'></asp:Label>
+                     </div>
+                      <div style="float:left;padding:25px 2px 15px 0px;width:80px;height:1px;margin-left:3px">
+                         <asp:Label ID="Label18" runat="server" Text="commented on Post"></asp:Label>
+                     </div>
+                     </asp:LinkButton>
+           
+                
+                  </div>
+            </ItemTemplate>
+        </asp:DataList>
+         <asp:Label ID="Label16" runat="server" Text=""></asp:Label>
+        </asp:Panel>
+                </div>
+        
+        
+        </div></div>
+        <asp:Button ID="Bu1" runat="server" Text="Button" style="display:none"/>
+        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" 
+            PopupControlID="Panel4" TargetControlID="Bu1" OkControlID="okkk" BackgroundCssClass="modalBackground">
+        </asp:ModalPopupExtender>
+        <asp:Panel ID="Panel4" runat="server" BackColor="white" Width="705px" Height="480px" >
+        <div style="border: thin solid #000000; width:705px;height:480px"> 
+                 <div style="border: thin solid #000000;width:350px;height:480px;float:left">
+                 <div style="height:345px">
+                      <div id="img"  style="padding:5px;float:left;width:330px">
+                             <asp:Image ID="Image8" runat="server" Height="60px" Width="60px" 
+                                 ImageUrl="~/images/rajnikanth_1_912007101707321.jpg"/><br />
+                                <asp:Label ID="Label21" runat="server" Text="name" Width="60px" Height="20px"></asp:Label>
+
+                      </div>
+
+               <div id="wall" >
+                         <asp:Label ID="Label22" runat="server" Text="hiiiii"></asp:Label>
+       
+                    <div style=" padding: 5px; width: 340px; ">
+                             <asp:Image ID="Image2" runat="server" Height="160px"  Width="340px" 
+                                 ImageUrl="~/images/Desert.jpg" />
+                     </div>  
+                     <div>
+                         <asp:Label ID="Label24" runat="server" Text="Label"></asp:Label>
+                         <asp:Label ID="Label25" runat="server" Text="Label"></asp:Label></div>
+                     </div>
+                 
+                 
+                 </div>
+           <div style="height:120px">
+                     <asp:Panel ID="Panel7" runat="server" Visible="True" >
+
+                         <div class="Fm g-s-Ma-ba Ma Nf" style="float:left;width:335px;height:70px">
+   
+                         <div class="Je" style="width:335px;height:120px">
+        
+                         <div class="xe" style="width:315px;height:100px">
+                          <div class="be c-B" style="width:305px;height:100px">
+                    <div style="float:left">
+                         <asp:TextBox ID="TextBox2" runat="server"  Width="305px" Height="50px" 
+                              TextMode="MultiLine" CssClass="glowing-border" 
+                                        ></asp:TextBox>
+      </div>
+       
+             <div style="float:right;margin-top:10px;margin-right:10px">
+           
+                        <asp:Button ID="Button4" runat="server" Text="Replay" onclick="Button4_Click" /> 
+             </div>
+               
+    </div>
+    </div>
+    </div>
+    </div>
+       </asp:Panel>
+        </div>
+                                        
+       </div>
+                
+                <div style="width:350px;height:480px;border: thin solid #000000;float:left;" >
+                    
+                    <asp:Panel ID="Panel5" runat="server" Width="350px" Height="450px" >
+            
+          <div style="background-color: #181919;width:350px;height:30px;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a;">
+          <div align="center" style="font-family: Calibri; font-size: medium; color: #FFFFFF;">
+              <asp:Label ID="Label23" runat="server" Text="Comments"></asp:Label>
+          </div>
+           <div style="float:right;margin-top:-21px">
+              <asp:Button ID="okkk" runat="server" Text="OK" Width="50px" 
+                   onclick="okkk_Click" /></div>
+              </div>
+          <asp:Panel ID="Panel6" runat="server" BackColor="#ffffff" ScrollBars="Auto" 
+               Width="349px" Height="420px" Font-Names="calibri" Font-Size="Medium">
+          
+           <asp:DataList ID="DataList9" runat="server">
+
+               <ItemTemplate>
+               <div style="border-bottom-style: solid; border-bottom-width: thin;height:70px;width:320px">
+               <div style="float:left;padding-left:20px; border-right-style: dashed; border-right-width: thin;width:80px">
+                   <asp:Image ID="Image7" runat="server" height="50px" Width="50px" ImageUrl='<%# Eval("avatar2") %>'/><br />
+                   <asp:Label ID="Label14" runat="server" Text='<%# Eval("name") %>'></asp:Label></div>
+                   <div style="margin-left:20px;float:left">
+                   <asp:Label ID="Label15" runat="server" Text='<%# Eval("comment") %>'></asp:Label></div>
+                   </div>
+               </ItemTemplate>
+
+           </asp:DataList>
+         
+            </asp:Panel>
+             <div style="background-color: #181919;width:350px;height:30px;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a;"></div>
+             </asp:Panel>
+                </div>
+              
+               
+        </div>
+
+        </asp:Panel>
+        <div id="header-search" style="margin-top:12px">
+    <div style=" width:250px;height:29px;z-index:20px">
+        <div style="float:left"><asp:TextBox ID="TextBox1" runat="server" 
+                CssClass="textbox" placeholder="Search Friend" 
+                ></asp:TextBox></div>
+      
+        </div>
+    </div>
+        <div style="float:right;margin-top:12px;margin-right:50px">
+            <asp:Button ID="B1" runat="server" Text="LOG OUT" Width="90px" 
+                CssClass="shadow1" BorderStyle="None" OnClick="Button1"/>
+    </div>
+    </div>
+    <div id="left-panel" style="width:200px; height: 800px; margin-top:-8px;position:fixed;margin-left:-10px;background-color:#ffffff;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a; border-right-style: solid; border-right-width: thin;">
+    <div id="left-panel-photo" style="margin-top:20px;height:180px;padding:5px;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a;background-color:#ffffff">
+        <asp:ImageButton ID="Image1" runat="server" Height="180px" Width="165px" 
+            onclick="Image1_Click"/></div> 
+            <div style=" width:165px;height:30px;margin-top:10px;margin-bottom:30px;margin-left:20px;padding-top:10px; background-color:#0099cc;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a; font-size: medium; font-weight: bold;" 
+            align="center">
+                <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" 
+                    Font-Underline="False" ForeColor="white" onclick="LinkButton1_Click"></asp:LinkButton>
+            </div>
+<%--        <asp:Image ID="Image1" runat="server" Height="150px" Width="165px" ImageUrl="~/images/unknown.gif" />  &nbsp;</div>
+--%>   <div id="left-panel-summary" 
+            
+            
+            style=" border-top: thin solid #C0C0C0; border-bottom: thin solid #C0C0C0; background-color: #ffffff; height:185px; margin-top:20px; margin-left:18px; border-left-color: #C0C0C0; border-left-width: thin; border-right-color: #C0C0C0; border-right-width: thin;">
+    <div style="border: thin solid #000000; width: 165px; background-color: #000000;margin-top:10px"> 
+        <asp:LinkButton ID="LinkButton2" runat="server" Width="165px" 
+            onclick="LinkButton2_Click" ><div style="float:left;margin-left:10px;background-color: #7F7F7F;"><asp:Image ID="Image3" runat="server" ImageUrl="~/images/Group_of_People-512.png" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px;font-family: Calibri; font-size: medium;">  <asp:Label ID="Label5" runat="server" Text="Friends" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+         
+    </div>
+     <div style="width: 165px; background-color: #000000;margin-top:15px;border: thin solid #000000;"> 
+        <asp:LinkButton ID="LinkButton3" runat="server" Width="165px" 
+             onclick="LinkButton3_Click" ><div style="float:left;margin-left:10px;background-color: #7F7F7F;" ><asp:Image ID="Image4" runat="server" ImageUrl="~/images/Discussion-512.png" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px; font-family: Calibri; font-size: medium;" >  <asp:Label ID="Label6" runat="server" Text="Messages" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+         
+    </div>
+     <div style="width: 165px; background-color: #000000;margin-top:15px;border: thin solid #000000;"> 
+        <asp:LinkButton ID="LinkButton4" runat="server" Width="165px" 
+             onclick="LinkButton4_Click" ><div style="float:left;margin-left:10px; background-color: #7F7F7F;"><asp:Image ID="Image5" runat="server" ImageUrl="~/images/gallery_2-512.png" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px; font-family: Calibri; font-size: medium;" >  <asp:Label ID="Label7" runat="server" Text="Photos" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+         
+    </div>
+    <div style="width: 165px; background-color: #000000;margin-top:15px;border: thin solid #000000;"> 
+        <asp:LinkButton ID="LinkButton8" runat="server" Width="165px" 
+             onclick="LinkButton8_Click" ><div style="float:left;margin-left:10px; background-color: #7F7F7F;"><asp:Image ID="Image9" runat="server" ImageUrl="~/images/gallery_2-512.png" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px; font-family: Calibri; font-size: medium;">  <asp:Label ID="Label26" runat="server" Text="Games" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+         
+    </div>
+    </div>
+    <div style="margin-left:18px">
+     <div style="border: thin solid #000000; width: 165px; background-color: #000000;margin-top:10px"> 
+        <asp:LinkButton ID="LinkButton11" runat="server" Width="165px" 
+            onclick="LinkButton11_Click" ><div style="float:left;margin-left:10px;background-color: #7F7F7F;"><asp:Image ID="Image12" runat="server" ImageUrl="~/images/aboutclassmates.jpg" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px;font-family: Calibri; font-size: medium;">  <asp:Label ID="Label29" runat="server" Text="E-Learning" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+          
+    </div>
+    </div>
+   
+    <div style="margin-left:18px">
+     <div style="border: thin solid #000000; width: 165px; background-color: #000000;margin-top:10px"> 
+        <asp:LinkButton ID="LinkButton5" runat="server" Width="165px" 
+            onclick="LinkButton5_Click" ><div style="float:left;margin-left:10px;background-color: #7F7F7F;"><asp:Image ID="Image6" runat="server" ImageUrl="~/images/Setting.png" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px;font-family: Calibri; font-size: medium;">  <asp:Label ID="Label17" runat="server" Text="Setting" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+          
+    </div>
+    </div>
+    <div style="margin-left:18px">
+     <div style="border: thin solid #000000; width: 165px; background-color: #000000;margin-top:10px"> 
+        <asp:LinkButton ID="LinkButton9" runat="server" Width="165px" 
+            onclick="LinkButton9_Click" ><div style="float:left;margin-left:10px;background-color: #7F7F7F;"><asp:Image ID="Image10" runat="server" ImageUrl="~/images/Setting.png" Width="30px" Height="30px" /></div>
+          <div style="float:left;margin-top:5px;margin-left:20px;font-family: Calibri; font-size: medium;">  <asp:Label ID="Label27" runat="server" Text="Chat" Font-Underline="false" Font-Bold="True" Font-Size="Larger" ForeColor="White"></asp:Label></div></asp:LinkButton>
+          
+    </div>
+    </div>
+   <div style="margin-left:50px"><img src="images/HEADSET.ICO" height="25px", width="25px" /> <a href="CS.aspx" class="fancybox fancybox.iframe" height="45px">Music</a></div>
+    </div>
+    
+    <div id="middle-panel" style="margin-left:200px;margin-top:60px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="right-panel" style="border-style: solid; border-width: thin; position: fixed; margin-top:-10px">
+<div style="border: thin solid #C0C0C0; width:280px;height:610px; float:right; margin-left:15px; background-color: #FFFFFF; color: #000000;">
+    <%--<div id="right-panel-fndfrnd" style="float:right">
+    
+    </div>--%>
+
+  
+    <div id="right-panel-buysell" 
+        style="background-color: #CCCCCC; border: thin solid #000000;width:250px;height:350px;margin-top:10px;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a;">
+     
+        <img src="images/market.png" height="100px" width="250px" />
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager> 
+        <asp:Panel ID="Panel1" runat="server">
+         <asp:HoverMenuExtender ID="HoverMenuExtender1" runat="server" 
+                PopupControlID="Button2" TargetControlID="Label8" OffsetX="-50">
+        </asp:HoverMenuExtender>
+         <div style="width:250px;height:30px;background-color:#181919">
+               <div style="font-size: large; font-family: calibri; color: #FFFFFF;float:left;width:75px;padding-left:50px;">
+                  <asp:Label ID="Label8" runat="server" Text="Sale" ></asp:Label>
+           </div>
+             <asp:Button ID="Button2" runat="server" Text="Sale" Width="125px" 
+                   Font-Names="Calibri" Font-Size="large" onclick="Button2_Click" />
+             <asp:HoverMenuExtender ID="HoverMenuExtender2" runat="server" TargetControlID="Label9" PopupControlID="Button3" OffsetX="-50">
+             </asp:HoverMenuExtender>
+         <div style="font-size: large; font-family: calibri; color: #FFFFFF;float:left;width:75px;padding-left:50px;">
+              <asp:Label ID="Label9" runat="server" Text="Buy"></asp:Label>
+       </div>
+             <asp:Button ID="Button3" runat="server" Text="Buy"  width="125px" 
+                   Font-Names="Calibri" Font-Size="large" onclick="Button3_Click"/>
+       </div>
+        </asp:Panel>
+        
+        <div style="float:left;">
+            <img src="images/sony.jpg" height="110px" width="100px"/>
+        
+        </div>
+        <div style="float:right;height:110px;width:100px">
+            <asp:Label ID="Label10" runat="server" Text="Sony Xperia Z"></asp:Label>
+            <asp:Label ID="Label11" runat="server" Text="Rs.35000/-"></asp:Label>
+        </div>
+        
+        <div>
+        <div style="float:left">
+            <img src="images/iphone5.jpg"  height="110px" width="100px" />
+        
+        </div>
+         <div style="float:right;height:110px;width:100px">
+            <asp:Label ID="Label12" runat="server" Text="iphone 5"></asp:Label>
+            <asp:Label ID="Label13" runat="server" Text="Rs.45000/-"></asp:Label>
+        </div>
+        </div>
+    </div>
+      <div id="right-panel-rss" style="background-color: #CCCCCC; border: thin solid #000000;width:250px;height:235px;margin-left:15px;margin-top:0px;-webkit-box-shadow:0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow:0px 1px 5px 0px #4a4a4a;">
+            <div style="background-color: #181919; height:30px;" align="center">
+              <asp:Label ID="Label14" runat="server" Text="News" Font-Names="Calibri" 
+                ForeColor="#ffffff" Font-Size="Large">
+                    </asp:Label>
+                 </div>
+          <asp:DataList ID="DataList4" runat="server" >
+          </asp:DataList>
+           
+    </div>
+    
+    </div>
+      <div id="people" 
+            style=" border: thin solid #000000; width:115px; float:right; margin-right:-15px;">
+             <div align="center">
+             <asp:Label ID="Label1" runat="server" Text="You May Know" 
+                    Font-Names="Calibri" Font-Size="Medium"></asp:Label>
+              
+            </div>
+          <%--<asp:Label ID="Label1" runat="server" Text="PeoPle YOu mAy KnoWn" ForeColor="#0099CC"></asp:Label>--%>
+          <%--<asp:DataList ID="DataList1" runat="server">
+           
+        <ItemTemplate>
+            <div style="width:70px;padding:15px 15px 5px 15px">
+                <asp:Image ID="Image2" runat="server" Height="70px" Width="70px" ImageUrl='<%# Eval("avatar2") %>' />
+  </div>
+  <div style="width:70px;padding:5px" align="center">
+      <asp:Label ID="Label3" runat="server" Text='<%# Eval("name") %>'></asp:Label>
+  </div>
+                <div style="width:100px;padding:5px 0px 15px 0px">
+                
+                    <asp:Button ID="friend" runat="server" Text="Add Friend" OnClick="friend_Click" 
+                         CommandArgument='<%# Eval("user_id") %>' Width="100px" />
+                </div>
+                </ItemTemplate>
+      
+         </asp:DataList>--%>
+         <div style="margin-top:10px; border-top-style: solid; border-bottom-style: solid; border-top-width: thin; border-bottom-width: thin; border-top-color: #000000; border-bottom-color: #000000;">
+             <asp:DataList ID="DataList1" runat="server">
+             <ItemTemplate>
+            <div style="width:70px;padding-left:20px;margin-top:10px">
+                <asp:Image ID="Image2" runat="server" Height="70px" Width="70px" ImageUrl='<%# Eval("avatar2") %>' />
+  </div>
+  <div style="width:70px;padding-left:20px; " align="center">
+      <asp:Label ID="Label3" runat="server" Text='<%# Eval("name") %>'></asp:Label>
+  </div>
+                <div style="width:101px;padding:6px;margin-top:5px; border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #000000;"">
+                
+                    <asp:Button ID="friend" runat="server" Text="Add Friend" OnClick="friend_Click" 
+                         CommandArgument='<%# Eval("user_id") %>' Width="100px" />
+                </div>
+                </ItemTemplate>
+             </asp:DataList>
+      
+         
+             </div>    
+        <div align="center">
+            <asp:LinkButton ID="LinkButton6" runat="server" Font-Names="Calibri">See All</asp:LinkButton>
+         </div>
+          
+      
+         
+                 
+
+            
+         
+
+            </div>
+       
+    </div>
+              
+  </div>
+    </form>
+   
+</body>
+</html>
